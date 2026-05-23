@@ -1,6 +1,5 @@
 
 
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -33,6 +32,8 @@
         <a href="#esperienza">Esperienza</a>
         <a href="#reclutamento">Reclutamento</a>
         <a href="#contatti">Contatti</a>
+        <a href="addestramento.html" class="btn btn-secondary">Tipologia di Addestramento</a>
+        <a href="ccfn.html" class="btn btn-secondary">CCFN</a>
       </nav>
     </div>
   </header>
@@ -46,7 +47,7 @@
       </video>
       -->
       <div class="hero-overlay">
-        <iframe width="1920" height="1080" src="https://www.youtube.com/embed/SQLjpazPml8?autoplay=1&amp;mute=1&amp;loop=1&amp;controls=0" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+        <iframe width="1920" height="1080" src="https://www.youtube.com/embed/SQLjpazPml8?autoplay=1&amp;mute=1&amp;loop=1&amp;controls=0" title="Video introduttivo Reparto Zero" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
 
       <div class="container hero-content">
@@ -119,7 +120,7 @@
 
         <div class="video-grid">
           <article class="video-card">
-            <div class="video-frame" style="width: 578.406px; height: 325.344px;">
+            <div class="video-frame" style="position:relative; aspect-ratio:16/9;">
               <iframe src="https://www.youtube.com/embed/rt-a1wnTgoo" style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen scrolling="no" allow="accelerometer *; clipboard-write *; encrypted-media *; gyroscope *; picture-in-picture *; web-share *;" referrerpolicy="strict-origin"></iframe>
             </div>
             <div class="video-meta">
@@ -129,7 +130,7 @@
           </article>
 
           <article class="video-card">
-            <div class="video-frame" style="width: 578.406px; height: 325.344px;">
+            <div class="video-frame" style="position:relative; aspect-ratio:16/9;">
               <iframe src="https://www.youtube.com/embed/PS_T47D86uY" style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen scrolling="no" allow="accelerometer *; clipboard-write *; encrypted-media *; gyroscope *; picture-in-picture *; web-share *;" referrerpolicy="strict-origin"></iframe>
             </div>
             <div class="video-meta">
@@ -247,25 +248,20 @@
       </div>
     </section>
 
-    <section class="section" id="contatti">
-      <div class="container final-grid">
-        <div>
+    <section class="section join-section" id="contatti">
+      <div class="container join-grid">
+        <div class="join-copy">
           <p class="section-kicker">Perché unirti a noi</p>
           <h2>Siamo più di un semplice gruppo: siamo una unità militare virtuale.</h2>
           <p>
             Unendoti a noi entrerai in una squadra che combatte fianco a fianco.
-            <strong>Insieme siamo più forti. Insieme vinciamo.</strong>
+            Insieme siamo più forti. Insieme vinciamo.
           </p>
         </div>
 
         <div class="contact-panel">
           <h3>Contatti</h3>
-          <p>
-            <strong>Discord:</strong>
-            <a class="inline-link" href="https://discord.gg/nTZGgSUnU6" target="_blank" rel="noopener noreferrer">
-              discord.gg/nTZGgSUnU6
-            </a>
-          </p>
+          <p><strong>Discord:</strong> <a class="inline-link" href="https://discord.gg/nTZGgSUnU6" target="_blank" rel="noopener noreferrer">discord.gg/nTZGgSUnU6</a></p>
           <p><strong>Clan:</strong> Reparto Zero</p>
           <p><strong>Reclutamento:</strong> aperto a nuove reclute 16+</p>
           <a href="https://discord.gg/nTZGgSUnU6" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Apri il Discord</a>
@@ -276,18 +272,25 @@
 
   <footer class="site-footer">
     <div class="container footer-wrap">
-      <p>© 2026 Reparto Zero — Clan Squad</p>
+      <p>© 2026 Reparto Zero — Clan Squad Italia</p>
     </div>
   </footer>
 
   <script>
-    const toggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('.site-nav');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const siteNav = document.querySelector('.site-nav');
 
-    if (toggle && nav) {
-      toggle.addEventListener('click', () => {
-        const open = nav.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', open);
+    if (menuToggle && siteNav) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = siteNav.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      siteNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          siteNav.classList.remove('open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
       });
     }
   </script>
