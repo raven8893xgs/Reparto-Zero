@@ -25,10 +25,7 @@ body {
   font-family: "Manrope", sans-serif;
   color: var(--text);
   line-height: 1.65;
-  background:
-    radial-gradient(circle at 15% 10%, rgba(212, 177, 100, 0.12), transparent 24%),
-    radial-gradient(circle at 85% 15%, rgba(117, 134, 84, 0.16), transparent 24%),
-    linear-gradient(180deg, #070804 0%, #0e120a 100%);
+  background: linear-gradient(#01240a, black, #01240a, black, #01240a, black);
   overflow-x: hidden;
 }
 
@@ -587,7 +584,7 @@ h1, h2, h3, blockquote {
 
 .site-footer {
   border-top: 1px solid var(--line);
-  background: rgba(0,0,0,0.16);
+  background: linear-gradient(180deg, rgba(7, 8, 4, 0.58), rgba(7, 8, 4, 0.92));
 }
 
 .footer-wrap {
@@ -659,4 +656,6 @@ h1, h2, h3, blockquote {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    padding: 1rem
+    padding: 1rem;
+  }
+}
