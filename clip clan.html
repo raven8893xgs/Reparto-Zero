@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clip Clan | Reparto Zero</title>
+  <meta name="description" content="Pagina dedicata alle clip del clan Reparto Zero." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080904;
+      --panel: rgba(18, 21, 13, 0.84);
+      --panel-strong: rgba(10, 12, 7, 0.92);
+      --text: #f7f3e8;
+      --muted: #d2c8b0;
+      --line: rgba(255, 248, 230, 0.14);
+      --gold: #d4b164;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+      --radius: 24px;
+      --container: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background: linear-gradient(#01240a, black, #01240a, black, #01240a, black);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(var(--container), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(7, 8, 4, 0.92), rgba(7, 8, 4, 0.58));
+    }
+
+    .nav-wrap {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      font-family: "Cinzel", serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #13130f;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--gold), #f0db9a);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 10px 24px rgba(0,0,0,0.24);
+    }
+
+    .brand-text { font-size: 1rem; }
+
+    .site-nav {
+      display: flex;
+      gap: 1.4rem;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .site-nav a {
+      color: var(--muted);
+      font-size: 0.96rem;
+      position: relative;
+    }
+
+    .site-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.35rem;
+      width: 100%;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.28s ease;
+    }
+
+    .site-nav a:hover { color: var(--text); }
+    .site-nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .page-hero { padding: 5rem 0 2rem; }
+
+    .hero-panel {
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)),
+        var(--panel);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      border-radius: 30px;
+      padding: clamp(1.5rem, 3vw, 2.2rem);
+    }
+
+    .eyebrow {
+      margin: 0 0 1rem;
+      color: var(--gold);
+      font-size: 0.82rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    h1, h2, h3 { font-family: "Cinzel", serif; margin: 0; text-transform: uppercase; }
+
+    h1 {
+      font-size: clamp(2.7rem, 7vw, 5.4rem);
+      line-height: 0.95;
+      max-width: 10ch;
+      margin-bottom: 1rem;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 62ch;
+      font-size: clamp(1rem, 1.4vw, 1.1rem);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.8rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0.95rem 1.35rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      color: #11110d;
+      background: linear-gradient(135deg, var(--gold), #efd58f);
+      box-shadow: 0 14px 30px rgba(212, 177, 100, 0.24);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(212, 177, 100, 0.38);
+    }
+
+    .section { padding: 2rem 0 5rem; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 1.5rem;
+      align-items: end;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1.08;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .clips-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+    }
+
+    .clip-card {
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)),
+        var(--panel);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      border-radius: 26px;
+      padding: 1rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .clip-video {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #000;
+    }
+
+    .clip-video iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .clip-meta {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .clip-index {
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .clip-meta h3 {
+      font-size: 1.45rem;
+      color: var(--text);
+    }
+
+    .clip-meta p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(7, 8, 4, 0.58), rgba(7, 8, 4, 0.92));
+    }
+
+    .footer-wrap {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .section-head,
+      .clips-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .footer-wrap {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      .site-nav {
+        gap: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Vai alla Home di Reparto Zero">
+        <span class="brand-mark">RZ</span>
+        <span class="brand-text">Reparto Zero</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Navigazione principale">
+        <a href="index.html">Home</a>
+        <a href="addestramento.html">Tipologia di Addestramento</a>
+        <a href="ccfn.html">CCFN</a>
+        <a href="stato maggiore.html">Stato Maggiore</a>
+        <a href="clip-clan.html">Clip Clan</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="hero-panel reveal">
+          <p class="eyebrow">Archivio Video</p>
+          <h1>Clip Clan</h1>
+          <p class="lead">
+            Una raccolta delle clip del clan, con i video incorporati direttamente nella pagina.
+            Puoi guardarli senza uscire dal sito.
+          </p>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Selezione Clip del Clan</h2>
+          <p>Le clip sono visibili direttamente qui sotto tramite player incorporato.</p>
+        </div>
+
+        <div class="clips-grid">
+          <article class="clip-card reveal">
+            <div class="clip-video">
+              <iframe
+                src="https://www.youtube.com/embed/jm3nGzebcg8"
+                title="Clip 1"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <div class="clip-meta">
+              <span class="clip-index">Clip 01</span>
+              <h3>Prima Clip</h3>
+              <p>Video del clan incorporato nella pagina.</p>
+            </div>
+          </article>
+
+          <article class="clip-card reveal">
+            <div class="clip-video">
+              <iframe
+                src="https://www.youtube.com/embed/7PpKnQzjrjk"
+                title="Clip 2"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <div class="clip-meta">
+              <span class="clip-index">Clip 02</span>
+              <h3>Seconda Clip</h3>
+              <p>Secondo video del clan incorporato nella pagina.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <span>Reparto Zero</span>
+      <span>Pagina Clip Clan</span>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
