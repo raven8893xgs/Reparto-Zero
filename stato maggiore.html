@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stato Maggiore | Reparto Zero</title>
+  <meta name="description" content="Presentazione dello Stato Maggiore del Reparto Zero, degli addestratori e dei ruoli di comando speciali." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080904;
+      --panel: rgba(18, 21, 13, 0.84);
+      --panel-strong: rgba(10, 12, 7, 0.92);
+      --text: #f7f3e8;
+      --muted: #d2c8b0;
+      --line: rgba(255, 248, 230, 0.14);
+      --gold: #d4b164;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+      --radius: 24px;
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background: linear-gradient(#01240a, black, #01240a, black, #01240a, black);
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(7, 8, 4, 0.92), rgba(7, 8, 4, 0.58));
+    }
+
+    .topbar-inner {
+      width: min(var(--container), calc(100% - 2rem));
+      margin: 0 auto;
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-family: "Cinzel", serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: flex-end;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0.95rem 1.35rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font-weight: 800;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(212, 177, 100, 0.38);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .nav-btn.active {
+      background: rgba(212, 177, 100, 0.14);
+      border-color: rgba(212, 177, 100, 0.35);
+      color: #f8f0dc;
+    }
+
+    .section {
+      padding: 3rem 0 4rem;
+    }
+
+    .hero {
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)),
+        var(--panel);
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.8rem;
+      font-weight: 800;
+      margin: 0 0 1rem;
+    }
+
+    h1, h2, h3 {
+      font-family: "Cinzel", serif;
+      margin: 0;
+      text-transform: uppercase;
+      color: var(--text);
+      text-wrap: balance;
+    }
+
+    h1 {
+      font-size: clamp(2.9rem, 6vw, 5.2rem);
+      line-height: 0.92;
+      margin-bottom: 1rem;
+      max-width: 11ch;
+    }
+
+    .lead {
+      max-width: 70ch;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+
+    .image-box {
+      margin: 0 auto 2rem;
+      max-width: 900px;
+      padding: 1rem;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)),
+        var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+      border-radius: 18px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)),
+        var(--panel);
+      border-radius: 22px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(212, 177, 100, 0.24);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .card h2 {
+      margin: 0 0 0.75rem;
+      font-size: 2rem;
+      color: var(--gold);
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .section-title {
+      font-size: clamp(2.3rem, 5vw, 4.3rem);
+      text-transform: uppercase;
+      margin: 0 0 1rem;
+      line-height: 0.95;
+      max-width: 12ch;
+    }
+
+    .section-text {
+      max-width: 70ch;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+
+    .single-profile {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .profile-image {
+      padding: 1rem;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)),
+        var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .profile-image img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+      border-radius: 18px;
+    }
+
+    .profile-card {
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)),
+        var(--panel);
+      border-radius: 24px;
+      padding: 1.6rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .profile-role {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .profile-card h3 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 0.95;
+      margin-bottom: 1rem;
+      color: var(--gold);
+    }
+
+    .profile-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1.03rem;
+    }
+
+    .profile-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1.2rem;
+    }
+
+    .profile-tags span {
+      padding: 0.7rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.025);
+      color: #e9dcc0;
+      font-size: 0.92rem;
+    }
+
+    .page-links {
+      margin-top: 2.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .page-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0.95rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid rgba(212,177,114,0.25);
+      background: rgba(212,177,114,0.09);
+      color: #f6ecd5;
+      font-weight: 800;
+      transition: 0.25s ease;
+    }
+
+    .page-link:hover {
+      transform: translateY(-2px);
+      background: rgba(212,177,114,0.16);
+      border-color: rgba(212,177,114,0.45);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .cards,
+      .single-profile {
+        grid-template-columns: 1fr;
+      }
+
+      h1,
+      .section-title {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 0.9rem 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding: 1.4rem;
+      }
+
+      .image-box img,
+      .profile-image img {
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Reparto Zero</div>
+      <nav class="nav-links" aria-label="Navigazione principale">
+        <a class="nav-btn" href="index.html">Home</a>
+        <a class="nav-btn" href="addestramento.html">Tipologia di Addestramento</a>
+        <a class="nav-btn" href="ccfn.html">CCFN</a>
+        <a class="nav-btn active" href="stato-maggiore.html">Stato Maggiore</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="hero reveal">
+          <p class="eyebrow">Stato Maggiore</p>
+          <h1>I Colonnelli Comandanti del Clan</h1>
+          <p class="lead">
+            Raver88 e Domingo sono i due fondatori del clan e guidano il Reparto Zero con disciplina,
+            visione e responsabilità. Questa pagina presenta il loro ruolo all’interno dello Stato Maggiore.
+          </p>
+
+          <div class="image-box">
+            <img src="colonello_commandanti.png" alt="Raver88 e Domingo, colonnelli comandanti del clan" />
+          </div>
+
+          <div class="cards">
+            <article class="card reveal">
+              <h2>Raver88</h2>
+              <p>
+                Fondatore del clan e riferimento strategico dello Stato Maggiore.
+                Coordina la visione generale e mantiene la direzione del gruppo.
+              </p>
+            </article>
+
+            <article class="card reveal">
+              <h2>Domingo</h2>
+              <p>
+                Fondatore del clan e pilastro operativo della struttura di comando.
+                Sostiene l’ordine interno e la compattezza della squadra.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">Formazione Reclute</p>
+        <h2 class="section-title">Addestratori Reclute</h2>
+        <p class="section-text">
+          Chiesa e Preacher seguono il percorso iniziale delle reclute, aiutando i nuovi membri a
+          integrarsi nel clan con ordine, disciplina e chiarezza. Il loro ruolo è fondamentale per
+          costruire basi solide fin dall’ingresso.
+        </p>
+
+        <div class="image-box reveal">
+          <img src="addestratori reclute.png" alt="Chiesa e Preacher, addestratori reclute del clan" />
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <h2>Chiesa</h2>
+            <p>
+              Addestratore reclute e reclutatore del clan. Segue i nuovi ingressi e li accompagna nel
+              percorso iniziale, trasmettendo regole, metodo e mentalità del reparto.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <h2>Preacher</h2>
+            <p>
+              Addestratore reclute e referente della CCFN. Supporta la formazione dei nuovi membri e
+              contribuisce al coordinamento e alla continuità operativa del clan.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">Formazione Avanzata</p>
+        <h2 class="section-title">Addestratore TL e FTL</h2>
+        <p class="section-text">
+          Raul è il punto di riferimento per l’addestramento TL e FTL. Oltre al ruolo formativo,
+          è anche reclutatore del clan e contribuisce a preparare membri capaci di guidare,
+          coordinare e sostenere il reparto nelle attività operative.
+        </p>
+
+        <div class="single-profile">
+          <div class="profile-image reveal">
+            <img src="addestratore tl e ftl.png" alt="Raul, addestratore TL e FTL del Reparto Zero" />
+          </div>
+
+          <article class="profile-card reveal">
+            <p class="profile-role">Addestratore TL e FTL</p>
+            <h3>Raul</h3>
+            <p>
+              Raul si occupa della preparazione dei membri destinati ai ruoli TL e FTL, trasmettendo
+              metodo, responsabilità e capacità di gestione sul campo. Il suo lavoro aiuta il clan a
+              formare figure affidabili per il coordinamento operativo. Inoltre svolge anche il ruolo
+              di reclutatore, contribuendo alla crescita e al rafforzamento della squadra.
+            </p>
+
+            <div class="profile-tags">
+              <span>Addestratore TL</span>
+              <span>Addestratore FTL</span>
+              <span>Reclutatore</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">Comando Speciale</p>
+        <h2 class="section-title">Vice Comandante della Daga d'Acciaio</h2>
+        <p class="section-text">
+          Patrawkov ricopre il ruolo di vice comandante dell'unità meccanizzata Daga d'Acciaio e contribuisce
+          alla gestione tecnica e organizzativa del clan. È anche Discord Dev, con un ruolo importante nello
+          sviluppo e nel supporto della struttura digitale del gruppo.
+        </p>
+
+        <div class="single-profile">
+          <div class="profile-image reveal">
+            <img src="vice commandante daga d'acciaio.png" alt="Patrawkov, vice comandante dell'unità meccanizzata Daga d'Acciaio e Discord Dev" />
+          </div>
+
+          <article class="profile-card reveal">
+            <p class="profile-role">Vice Comandante • Unità Meccanizzata</p>
+            <h3>Patrawkov</h3>
+            <p>
+              Patrawkov è il vice comandante dell'unità meccanizzata Daga d'Acciaio e svolge anche il ruolo di
+              Discord Dev. Supporta il comando nelle attività operative e cura gli aspetti tecnici e organizzativi
+              legati alla presenza digitale del clan.
+            </p>
+
+            <div class="profile-tags">
+              <span>Vice Comandante</span>
+              <span>Unità Meccanizzata</span>
+              <span>Discord Dev</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">Unità Aerea Tattica</p>
+        <h2 class="section-title">Vice Comandante Unità Aerea Tattica</h2>
+        <p class="section-text">
+          Mehrko ricopre il ruolo di vice comandante dell'Unità Aerea Tattica ed è anche referente della CCFN.
+          Il suo compito è sostenere il coordinamento operativo dell’unità e rappresentare un punto di riferimento
+          stabile per organizzazione, supporto e continuità.
+        </p>
+
+        <div class="single-profile">
+          <div class="profile-image reveal">
+            <img src="vice commandate unita aerea tattica.png" alt="Mehrko, vice comandante dell'Unità Aerea Tattica e referente CCFN" />
+          </div>
+
+          <article class="profile-card reveal">
+            <p class="profile-role">Vice Comandante • Unità Aerea Tattica</p>
+            <h3>Mehrko</h3>
+            <p>
+              Mehrko è il vice comandante dell'Unità Aerea Tattica e svolge anche il ruolo di referente della CCFN.
+              Contribuisce al coordinamento della struttura, al mantenimento dell’ordine operativo e al supporto
+              delle attività dell’unità con presenza e affidabilità.
+            </p>
+
+            <div class="profile-tags">
+              <span>Vice Comandante</span>
+              <span>Unità Aerea Tattica</span>
+              <span>Referente CCFN</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
