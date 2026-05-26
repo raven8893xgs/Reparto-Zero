@@ -27,16 +27,41 @@
       </button>
 
       <nav class="site-nav" aria-label="Menu principale">
-        <a href="#chi-siamo">Chi siamo</a>
+        <ul class="dropdown">
+          <li>
+            <a href="index.html#chi-siamo">Chi siamo</a>
+            <ul class="tendina">
+              <a href="stato maggiore.html" class="btn-secondary">Stato Maggiore</a>
+            </ul>
+          </li>
+        </ul>
         <a href="#logo-clan">Logo</a>
-        <a href="#video">Video</a>
-        <a href="#esperienza">Esperienza</a>
-        <a href="#reclutamento">Reclutamento</a>
+        <ul class="dropdown">
+          <li>
+            <a href="#video">Video</a>
+            <ul class="tendina">
+              <a href="clip clan.html" class="btn-secondary">Clip Clan</a>
+            </ul>
+          </li>
+        </ul>
+        <ul class="dropdown">
+          <li>
+            <a href="#esperienza">Esperienza</a>
+            <ul class="tendina">
+              <li><a href="ccfn.html" class="btn-secondary">CCFN</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="dropdown">
+          <li>
+            <a href="#reclutamento">Reclutamento</a>
+            <ul class="tendina">
+              <a href="addestramento.html" class="btn-secondary">Tipologia di Addestramento</a>
+            </ul>
+          </li>
+        </ul>
+        
         <a href="#contatti">Contatti</a>
-        <a href="addestramento.html" class="btn btn-secondary">Tipologia di Addestramento</a>
-        <a href="ccfn.html" class="btn btn-secondary">CCFN</a>
-        <a href="stato maggiore.html" class="btn btn-secondary">Stato Maggiore</a>
-         <a href="clip clan.html" class="btn btn-secondary">Clip Clan</a>
       </nav>
     </div>
   </header>
@@ -199,7 +224,7 @@
         <div class="objective-quote">
           <p class="section-kicker">Il nostro obiettivo</p>
           <blockquote>
-            Vogliamo creare una community di Squad che condivida la nostra stessa passione:
+            Abbiamo creato una community di Squad che condivida la nostra stessa passione:
             una famiglia militare virtuale che si supporta, si motiva e combatte fianco a fianco.
           </blockquote>
         </div>
@@ -270,6 +295,20 @@
   <footer class="site-footer">
     <div class="container footer-wrap">
       <p>© 2026 Reparto Zero — Clan Squad Italia</p>
+    </div>
+    <div class="container site-nav" style="display: block;">
+      <a href="#hero" class="brand">
+        <span class="brand-text">Reparto Zero</span>
+      </a>
+      <br>
+      <ul class="dropdown">
+        <li><a href="#hero" class="btn-footer">Homepage</a></li>
+        <li><a href="stato maggiore.html" class="btn-footer">Stato Maggiore</a></li>
+        <li><a href="clip clan.html" class="btn-footer">Clip Clan</a></li>
+        <li><a href="ccfn.html" class="btn-footer">CCFN</a></li>
+        <li><a href="addestramento.html" class="btn-footer">Tipologia di Addestramento</a></li>
+        <li><a href="#contatti" class="btn-footer">Contatti</a></li>
+      </ul>
     </div>
   </footer>
 

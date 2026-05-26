@@ -9,389 +9,57 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #080904;
-      --panel: rgba(18, 21, 13, 0.84);
-      --panel-strong: rgba(10, 12, 7, 0.92);
-      --text: #f7f3e8;
-      --muted: #d2c8b0;
-      --line: rgba(255, 248, 230, 0.14);
-      --gold: #d4b164;
-      --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
-      --radius: 24px;
-      --container: 1180px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Manrope", sans-serif;
-      color: var(--text);
-      line-height: 1.65;
-      background: linear-gradient(#01240a, black, #01240a, black, #01240a, black);
-      overflow-x: hidden;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .container {
-      width: min(var(--container), calc(100% - 2rem));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(14px);
-      background: linear-gradient(180deg, rgba(7, 8, 4, 0.92), rgba(7, 8, 4, 0.58));
-    }
-
-    .topbar-inner {
-      width: min(var(--container), calc(100% - 2rem));
-      margin: 0 auto;
-      min-height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .brand {
-      font-family: "Cinzel", serif;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--text);
-      white-space: nowrap;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: flex-end;
-    }
-
-    .nav-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 54px;
-      padding: 0.95rem 1.35rem;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      font-weight: 800;
-      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
-    }
-
-    .nav-btn:hover {
-      transform: translateY(-2px);
-      border-color: rgba(212, 177, 100, 0.38);
-      background: rgba(255,255,255,0.07);
-    }
-
-    .nav-btn.active {
-      background: rgba(212, 177, 100, 0.14);
-      border-color: rgba(212, 177, 100, 0.35);
-      color: #f8f0dc;
-    }
-
-    .section {
-      padding: 3rem 0 4rem;
-    }
-
-    .hero {
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)),
-        var(--panel);
-      border-radius: 28px;
-      padding: 2rem;
-      box-shadow: var(--shadow);
-    }
-
-    .eyebrow {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      font-size: 0.8rem;
-      font-weight: 800;
-      margin: 0 0 1rem;
-    }
-
-    h1, h2, h3 {
-      font-family: "Cinzel", serif;
-      margin: 0;
-      text-transform: uppercase;
-      color: var(--text);
-      text-wrap: balance;
-    }
-
-    h1 {
-      font-size: clamp(2.9rem, 6vw, 5.2rem);
-      line-height: 0.92;
-      margin-bottom: 1rem;
-      max-width: 11ch;
-    }
-
-    .lead {
-      max-width: 70ch;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 1.05rem;
-      margin-bottom: 2rem;
-    }
-
-    .image-box {
-      margin: 0 auto 2rem;
-      max-width: 900px;
-      padding: 1rem;
-      border-radius: 24px;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)),
-        var(--panel);
-      box-shadow: var(--shadow);
-    }
-
-    .image-box img {
-      width: 100%;
-      height: 560px;
-      object-fit: cover;
-      border-radius: 18px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .card {
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)),
-        var(--panel);
-      border-radius: 22px;
-      padding: 1.5rem;
-      box-shadow: var(--shadow);
-      transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(212, 177, 100, 0.24);
-      background: rgba(255,255,255,0.04);
-    }
-
-    .card h2 {
-      margin: 0 0 0.75rem;
-      font-size: 2rem;
-      color: var(--gold);
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .section-title {
-      font-size: clamp(2.3rem, 5vw, 4.3rem);
-      text-transform: uppercase;
-      margin: 0 0 1rem;
-      line-height: 0.95;
-      max-width: 12ch;
-    }
-
-    .section-text {
-      max-width: 70ch;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 1.05rem;
-      margin-bottom: 2rem;
-    }
-
-    .single-profile {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 1rem;
-      align-items: stretch;
-    }
-
-    .profile-image {
-      padding: 1rem;
-      border-radius: 24px;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)),
-        var(--panel);
-      box-shadow: var(--shadow);
-    }
-
-    .profile-image img {
-      width: 100%;
-      height: 560px;
-      object-fit: cover;
-      border-radius: 18px;
-    }
-
-    .profile-card {
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)),
-        var(--panel);
-      border-radius: 24px;
-      padding: 1.6rem;
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .profile-role {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.78rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-    }
-
-    .profile-card h3 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 0.95;
-      margin-bottom: 1rem;
-      color: var(--gold);
-    }
-
-    .profile-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 1.03rem;
-    }
-
-    .profile-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      margin-top: 1.2rem;
-    }
-
-    .profile-tags span {
-      padding: 0.7rem 0.95rem;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.025);
-      color: #e9dcc0;
-      font-size: 0.92rem;
-    }
-
-    .page-links {
-      margin-top: 2.2rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-    }
-
-    .page-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0.95rem 1.2rem;
-      border-radius: 999px;
-      border: 1px solid rgba(212,177,114,0.25);
-      background: rgba(212,177,114,0.09);
-      color: #f6ecd5;
-      font-weight: 800;
-      transition: 0.25s ease;
-    }
-
-    .page-link:hover {
-      transform: translateY(-2px);
-      background: rgba(212,177,114,0.16);
-      border-color: rgba(212,177,114,0.45);
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 900px) {
-      .cards,
-      .single-profile {
-        grid-template-columns: 1fr;
-      }
-
-      h1,
-      .section-title {
-        max-width: none;
-      }
-    }
-
-    @media (max-width: 800px) {
-      .topbar-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        padding: 0.9rem 0;
-      }
-
-      .nav-links {
-        width: 100%;
-        justify-content: flex-start;
-      }
-
-      .hero {
-        padding: 1.4rem;
-      }
-
-      .image-box img,
-      .profile-image img {
-        height: auto;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">Reparto Zero</div>
-      <nav class="nav-links" aria-label="Navigazione principale">
-        <a class="nav-btn" href="index.html">Home</a>
-        <a class="nav-btn" href="addestramento.html">Tipologia di Addestramento</a>
-        <a class="nav-btn" href="ccfn.html">CCFN</a>
-        <a class="nav-btn" href="clip clan.html">Clip Clan</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html#hero" class="brand">
+        <span class="brand-mark">RZ</span>
+        <span class="brand-text">Reparto Zero</span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" aria-label="Menu principale">
+        <ul class="dropdown">
+          <li>
+            <a href="index.html#chi-siamo">Chi siamo</a>
+            <ul class="tendina">
+              <a href="stato maggiore.html" class="btn-secondary">Stato Maggiore</a>
+            </ul>
+          </li>
+        </ul>
+        <a href="index.html#logo-clan">Logo</a>
+        <ul class="dropdown">
+          <li>
+            <a href="index.html#video">Video</a>
+            <ul class="tendina">
+              <a href="clip clan.html" class="btn-secondary">Clip Clan</a>
+            </ul>
+          </li>
+        </ul>
+        <ul class="dropdown">
+          <li>
+            <a href="index.html#esperienza">Esperienza</a>
+            <ul class="tendina">
+              <li><a href="ccfn.html" class="btn-secondary">CCFN</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="dropdown">
+          <li>
+            <a href="index.html#reclutamento">Reclutamento</a>
+            <ul class="tendina">
+              <a href="addestramento.html" class="btn-secondary">Tipologia di Addestramento</a>
+            </ul>
+          </li>
+        </ul>
+        
+        <a href="index.html#contatti">Contatti</a>
       </nav>
     </div>
   </header>
@@ -569,6 +237,26 @@
       </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© 2026 Reparto Zero — Clan Squad Italia</p>
+    </div>
+    <div class="container site-nav" style="display: block;">
+      <a href="index.html#hero" class="brand">
+        <span class="brand-text">Reparto Zero</span>
+      </a>
+      <br>
+      <ul class="dropdown">
+        <li><a href="index.html#hero" class="btn-footer">Homepage</a></li>
+        <li><a href="#" class="btn-footer">Stato Maggiore</a></li>
+        <li><a href="clip clan.html" class="btn-footer">Clip Clan</a></li>
+        <li><a href="ccfn.html" class="btn-footer">CCFN</a></li>
+        <li><a href="addestramento.html" class="btn-footer">Tipologia di Addestramento</a></li>
+        <li><a href="index.html#contatti" class="btn-footer">Contatti</a></li>
+      </ul>
+    </div>
+  </footer>
 
   <script>
     const observer = new IntersectionObserver((entries) => {

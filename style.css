@@ -54,6 +54,28 @@ a {
   background: linear-gradient(180deg, rgba(7, 8, 4, 0.92), rgba(7, 8, 4, 0.58));
 }
 
+.tendina {
+  display: none;
+  position: absolute;
+}
+
+/* Mostra la tendina quando si passa sopra la voce "Categorie" */
+.dropdown:hover .tendina {
+  display: block;
+}
+
+.dropdown, .tendina {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Opzionale: se vuoi disporre le voci principali in orizzontale */
+.dropdown {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .nav-wrap {
   min-height: 78px;
   display: flex;
@@ -255,13 +277,6 @@ h1, h2, h3, blockquote {
 
 .btn-secondary {
   color: var(--text);
-  border-color: var(--line);
-  background: rgba(255,255,255,0.04);
-}
-
-.btn-secondary:hover {
-  background: rgba(255,255,255,0.07);
-  border-color: rgba(212, 177, 100, 0.38);
 }
 
 .hero-points {
@@ -586,11 +601,20 @@ h1, h2, h3, blockquote {
   background: linear-gradient(180deg, rgba(7, 8, 4, 0.58), rgba(7, 8, 4, 0.92));
 }
 
+.btn-footer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px;
+  font-weight: 800;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+}
+
 .footer-wrap {
   min-height: 84px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1rem;
   color: var(--muted);
   font-size: 0.95rem;
@@ -653,7 +677,6 @@ h1, h2, h3, blockquote {
 
   .footer-wrap {
     flex-direction: column;
-    justify-content: center;
     text-align: center;
     padding: 1rem;
   }

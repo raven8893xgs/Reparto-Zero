@@ -13,7 +13,7 @@
 <body>
   <header class="site-header">
     <div class="container nav-wrap">
-      <a href="index.html" class="brand">
+      <a href="index.html#hero" class="brand">
         <span class="brand-mark">RZ</span>
         <span class="brand-text">Reparto Zero</span>
       </a>
@@ -24,14 +24,41 @@
       </button>
 
       <nav class="site-nav" aria-label="Menu principale">
-        <a href="index.html">Home</a>
-        <a href="index.html#chi-siamo">Chi siamo</a>
-        <a href="index.html#logo-clan">Logo</a>
-        <a href="index.html#video">Video</a>
-        <a href="index.html#esperienza">Esperienza</a>
-        <a href="index.html#reclutamento">Reclutamento</a>
+        <ul class="dropdown">
+          <li>
+            <a href="index.html#chi-siamo">Chi siamo</a>
+            <ul class="tendina">
+              <a href="stato maggiore.html" class="btn-secondary">Stato Maggiore</a>
+            </ul>
+          </li>
+        </ul>
+        <a href="index.htmlindex.html#logo-clan">Logo</a>
+        <ul class="dropdown">
+          <li>
+            <a href="index.html#video">Video</a>
+            <ul class="tendina">
+              <a href="clip clan.html" class="btn-secondary">Clip Clan</a>
+            </ul>
+          </li>
+        </ul>
+        <ul class="dropdown">
+          <li>
+            <a href="index.html#esperienza">Esperienza</a>
+            <ul class="tendina">
+              <li><a href="ccfn.html" class="btn-secondary">CCFN</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="dropdown">
+          <li>
+            <a href="index.html#reclutamento">Reclutamento</a>
+            <ul class="tendina">
+              <a href="addestramento.html" class="btn-secondary">Tipologia di Addestramento</a>
+            </ul>
+          </li>
+        </ul>
+        
         <a href="index.html#contatti">Contatti</a>
-        <a href="index.html" class="btn btn-secondary">← Torna alla Home</a>
       </nav>
     </div>
   </header>
@@ -156,17 +183,28 @@
             migliorare la qualità delle sessioni e rendere ogni membro più preparato e consapevole.
           </p>
         </div>
-
-        <div class="contact-panel">
-          <h3>Ritorna alla home</h3>
-          <p>Puoi tornare alla pagina principale del sito per continuare la navigazione.</p>
-          <a href="index.html" class="btn btn-primary">Torna alla Home</a>
-          <a href="ccfn.html" class="btn btn-primary">CCFN</a>
-         <a href="stato maggiore.html" class="btn btn-primary">Stato Maggiore</a>
-         <a href="clip clan.html" class="btn btn-primary">Clip Clan</a>
-        </div>
       </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© 2026 Reparto Zero — Clan Squad Italia</p>
+    </div>
+    <div class="container site-nav" style="display: block;">
+      <a href="index.html#hero" class="brand">
+        <span class="brand-text">Reparto Zero</span>
+      </a>
+      <br>
+      <ul class="dropdown">
+        <li><a href="index.html#hero" class="btn-footer">Homepage</a></li>
+        <li><a href="stato maggiore.html" class="btn-footer">Stato Maggiore</a></li>
+        <li><a href="clip clan.html" class="btn-footer">Clip Clan</a></li>
+        <li><a href="ccfn.html" class="btn-footer">CCFN</a></li>
+        <li><a href="#" class="btn-footer">Tipologia di Addestramento</a></li>
+        <li><a href="index.html#contatti" class="btn-footer">Contatti</a></li>
+      </ul>
+    </div>
+  </footer>
 </body>
 </html>
