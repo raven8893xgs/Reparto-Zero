@@ -9,11 +9,225 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  
+
   <style>
+    :root {
+      --bg: #080904;
+      --panel: rgba(18, 21, 13, 0.84);
+      --panel-strong: rgba(10, 12, 7, 0.92);
+      --text: #f7f3e8;
+      --muted: #d2c8b0;
+      --line: rgba(255, 248, 230, 0.14);
+      --gold: #d4b164;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+      --radius: 24px;
+      --container: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background: linear-gradient(#01240a, black, #01240a, black, #01240a, black);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(7, 8, 4, 0.92), rgba(7, 8, 4, 0.58));
+    }
+
+    .nav-wrap {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      font-family: "Cinzel", serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #13130f;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--gold), #f0db9a);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 10px 24px rgba(0,0,0,0.24);
+    }
+
+    .brand-text {
+      font-size: 1rem;
+    }
+
+    .site-nav {
+      display: flex;
+      gap: 1.4rem;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .site-nav a {
+      color: var(--muted);
+      font-size: 0.96rem;
+      position: relative;
+    }
+
+    .site-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.35rem;
+      width: 100%;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.28s ease;
+    }
+
+    .site-nav a:hover {
+      color: var(--text);
+    }
+
+    .site-nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .page-hero {
+      padding: 5rem 0 2rem;
+    }
+
     .hero-panel {
-      max-width: 100%;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)),
+        var(--panel);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      border-radius: 30px;
+      padding: clamp(1.5rem, 3vw, 2.2rem);
+    }
+
+    .eyebrow {
+      margin: 0 0 1rem;
+      color: var(--gold);
+      font-size: 0.82rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    h1, h2, h3 {
+      font-family: "Cinzel", serif;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 7vw, 5.4rem);
+      line-height: 0.95;
+      max-width: 10ch;
+      margin-bottom: 1rem;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 62ch;
+      font-size: clamp(1rem, 1.4vw, 1.1rem);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.8rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0.95rem 1.35rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #11110d;
+      background: linear-gradient(135deg, var(--gold), #efd58f);
+      box-shadow: 0 14px 30px rgba(212, 177, 100, 0.24);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(212, 177, 100, 0.38);
+    }
+
+    .section {
+      padding: 2rem 0 5rem;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 1.5rem;
+      align-items: end;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1.08;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
     }
 
     .clips-grid {
@@ -74,57 +288,68 @@
       margin: 0;
       color: var(--muted);
     }
+
+    .site-footer {
+      border-top: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(7, 8, 4, 0.58), rgba(7, 8, 4, 0.92));
+    }
+
+    .footer-wrap {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .section-head,
+      .clips-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .footer-wrap {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      .site-nav {
+        gap: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="container nav-wrap">
-      <a href="index.html#hero" class="brand">
+      <a class="brand" href="index.html" aria-label="Vai alla Home di Reparto Zero">
         <span class="brand-mark">RZ</span>
         <span class="brand-text">Reparto Zero</span>
       </a>
 
-      <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-      </button>
-
-      <nav class="site-nav" aria-label="Menu principale">
-        <ul class="dropdown">
-          <li>
-            <a href="index.html#chi-siamo">Chi siamo</a>
-            <ul class="tendina">
-              <a href="stato maggiore.html" class="btn-secondary">Stato Maggiore</a>
-            </ul>
-          </li>
-        </ul>
-        <a href="index.html#logo-clan">Logo</a>
-        <ul class="dropdown">
-          <li>
-            <a href="index.html#video">Video</a>
-            <ul class="tendina">
-              <a href="clip clan.html" class="btn-secondary">Clip Clan</a>
-            </ul>
-          </li>
-        </ul>
-        <ul class="dropdown">
-          <li>
-            <a href="index.html#esperienza">Esperienza</a>
-            <ul class="tendina">
-              <li><a href="ccfn.html" class="btn-secondary">CCFN</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="dropdown">
-          <li>
-            <a href="index.html#reclutamento">Reclutamento</a>
-            <ul class="tendina">
-              <a href="addestramento.html" class="btn-secondary">Tipologia di Addestramento</a>
-            </ul>
-          </li>
-        </ul>
+      <nav class="site-nav" aria-label="Navigazione principale">
+        <a href="index.html">Home</a>
+        <a href="addestramento.html">Tipologia di Addestramento</a>
+        <a href="ccfn.html">CCFN</a>
+        <a href="stato maggiore.html">Stato Maggiore</a>
         
-        <a href="index.html#contatti">Contatti</a>
       </nav>
     </div>
   </header>
@@ -195,6 +420,22 @@
               <p>Nuova clip del clan incorporata direttamente nella pagina.</p>
             </div>
           </article>
+
+          <article class="clip-card reveal">
+            <div class="clip-video">
+              <iframe
+                src="https://www.youtube.com/embed/9PvxU0wlw3s"
+                title="Clip 4"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <div class="clip-meta">
+              <span class="clip-index">Clip 04</span>
+              <h3>Quarta Clip</h3>
+              <p>Nuovo video aggiunto alla raccolta del clan.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -202,21 +443,8 @@
 
   <footer class="site-footer">
     <div class="container footer-wrap">
-      <p>© 2026 Reparto Zero — Clan Squad Italia</p>
-    </div>
-    <div class="container site-nav" style="display: block;">
-      <a href="index.html#hero" class="brand">
-        <span class="brand-text">Reparto Zero</span>
-      </a>
-      <br>
-      <ul class="dropdown">
-        <li><a href="index.html#hero" class="btn-footer">Homepage</a></li>
-        <li><a href="stato maggiore.html" class="btn-footer">Stato Maggiore</a></li>
-        <li><a href="#" class="btn-footer">Clip Clan</a></li>
-        <li><a href="ccfn.html" class="btn-footer">CCFN</a></li>
-        <li><a href="addestramento.html" class="btn-footer">Tipologia di Addestramento</a></li>
-        <li><a href="index.html#contatti" class="btn-footer">Contatti</a></li>
-      </ul>
+      <span>Reparto Zero</span>
+      <span></span>
     </div>
   </footer>
 
