@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inviti Eventi | Reparto Zero</title>
+  <meta name="description" content="Invia una richiesta evento al Reparto Zero tramite il modulo ufficiale." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root {
+      --bg: #050705;
+      --panel: rgba(14, 18, 12, 0.88);
+      --text: #f6f1e6;
+      --muted: #cfc6b2;
+      --line: rgba(255, 248, 230, 0.12);
+      --gold: #d4b164;
+      --green: #1f5f3a;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+      --radius: 24px;
+      --container: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(31, 95, 58, 0.22), transparent 28%),
+        linear-gradient(180deg, #071009 0%, #040604 100%);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(var(--container), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(5, 7, 5, 0.94), rgba(5, 7, 5, 0.62));
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-wrap {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      font-family: "Cinzel", serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #11110d;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--gold), #f0db9a);
+    }
+
+    .site-nav {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .site-nav a {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .hero {
+      padding: 5rem 0 2rem;
+    }
+
+    .hero-panel {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      border-radius: 30px;
+      padding: clamp(1.5rem, 3vw, 2.4rem);
+    }
+
+    .eyebrow {
+      margin: 0 0 1rem;
+      color: var(--gold);
+      font-size: 0.82rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    h1, h2, h3 {
+      font-family: "Cinzel", serif;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      line-height: 0.94;
+      margin-bottom: 1rem;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 68ch;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .section {
+      padding: 2rem 0 5rem;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 1.2rem;
+      align-items: start;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      border-radius: 26px;
+      padding: 1.2rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .field.full { grid-column: 1 / -1; }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    option {
+      background-color: black;
+      color: white;
+    }
+
+    label {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #efe6d2;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      padding: 0.95rem 1rem;
+      font: inherit;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0.95rem 1.35rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      color: #11110d;
+      background: linear-gradient(135deg, var(--gold), #efd58f);
+    }
+
+    .btn-secondary {
+      color: #f7f8ff;
+      border-color: rgba(31, 95, 58, 0.45);
+      background: rgba(31, 95, 58, 0.18);
+    }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .note {
+      margin-top: 0.9rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .info-card {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 1.15rem;
+      background: rgba(255,255,255,0.03);
+      margin-bottom: 1rem;
+    }
+
+    .info-card h3 {
+      font-size: 1.15rem;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .info-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    @media (max-width: 980px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .nav-wrap { flex-direction: column; padding: 1rem 0; }
+      .site-nav { justify-content: center; }
+      .form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html#hero" class="brand">
+        <span class="brand-mark">RZ</span>
+        <span class="brand-text">Reparto Zero</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Menu principale">
+        <ul class="dropdown">
+          <li>
+            <a href="index.html#chi-siamo">Chi siamo</a>
+            <ul class="tendina">
+              <a href="stato maggiore.html" class="btn-secondary">Stato Maggiore</a>
+            </ul>
+          </li>
+        </ul>
+        <a href="index.html#logo-clan">Logo</a>
+        <ul class="dropdown">
+          <li>
+            <a href="index.html#video">Video</a>
+            <ul class="tendina">
+              <a href="clip clan.html" class="btn-secondary">Clip Clan</a>
+            </ul>
+          </li>
+        </ul>
+        <ul class="dropdown">
+          <li>
+            <a href="index.html#esperienza">Esperienza</a>
+            <ul class="tendina">
+              <li><a href="ccfn.html" class="btn-secondary">CCFN</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="dropdown">
+          <li>
+            <a href="index.html#reclutamento">Reclutamento</a>
+            <ul class="tendina">
+              <a href="addestramento.html" class="btn-secondary">Tipologia di Addestramento</a>
+            </ul>
+          </li>
+        </ul>
+        
+        <a href="index.html#contatti">Contatti</a>
+        <a href="invito-eventi.html">Events</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-panel">
+          <p class="eyebrow">Canale Ufficiale<br>Official channel</p>
+          <h1>Event invitation</h1>
+          <p class="lead">
+            Fill out the form to submit an official request to Reparto Zero.
+            We'll receive an email notification with all the details of your event.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="layout">
+          <section class="panel">
+            <form id="eventForm">
+              <div class="form-grid">
+                <div class="field">
+                  <label for="clan">Clan name</label>
+                  <input type="text" id="clan" name="clan" required>
+                </div>
+
+                <div class="field">
+                  <label for="referente">Referent</label>
+                  <input type="text" id="referente" name="referente" required>
+                </div>
+
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="field">
+                  <label for="discord">Invitation to your clan Discord</label>
+                  <input type="text" id="discord" name="discord">
+                </div>
+
+                <div class="field">
+                  <label for="data">Event date</label>
+                  <input type="date" id="data" name="data" required>
+                </div>
+
+                <div class="field">
+                  <label for="orario">Time</label>
+                  <input type="time" id="orario" name="orario" required>
+                </div>
+
+                <div class="field">
+                  <label for="serverName">Server name</label>
+                  <input type="text" id="serverName" name="serverName" required>
+                </div>
+
+                <div class="field">
+                  <label for="playerNumber">Total player number</label>
+                  <input type="text" id="playerNumber" name="playerNumber" required>
+                </div>
+
+                <div class="field full">
+                  <label for="tipo">Mode</label>
+                  <select id="tipo" name="tipo" required>
+                    <option value="">Select a mode</option>
+                    <option>Advance And Secure</option>
+                    <option>Random Advance And Secure</option>
+                    <option>Invation</option>
+                    <option>Skirmish</option>
+                    <option>Other (specify in the note)</option>
+                  </select>
+                </div>
+
+                <div class="field full">
+                  <label for="serverMod">Link of the mods (if present)</label>
+                  <textarea id="serverMod" name="serverMod"></textarea>
+                </div>
+
+                <div class="field full">
+                  <label for="note">Additional notes</label>
+                  <textarea id="note" name="note"></textarea>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Send request</button>
+              </div>
+
+              <div>
+                <p id="esito"></p>
+              </div>
+            </form>
+          </section>
+
+          <aside class="panel">
+            <div class="info-card">
+              <h3>How it works</h3>
+              <p>Fill the form and send the send the request.<br>You will receive a email with all the details.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© 2026 Reparto Zero — Clan Squad Italia</p>
+    </div>
+    <div class="container site-nav" style="display: block;">
+      <a href="index.html#hero" class="brand">
+        <span class="brand-text">Reparto Zero</span>
+      </a>
+      <br>
+      <ul class="dropdown">
+        <li><a href="index.html#hero" class="btn-footer">Homepage</a></li>
+        <li><a href="stato maggiore.html" class="btn-footer">Stato Maggiore</a></li>
+        <li><a href="clip clan.html" class="btn-footer">Clip Clan</a></li>
+        <li><a href="ccfn.html" class="btn-footer">CCFN</a></li>
+        <li><a href="addestramento.html" class="btn-footer">Tipologia di Addestramento</a></li>
+        <li><a href="contatti" class="btn-footer">Contatti</a></li>
+        <li><a href="invito-eventi.html" class="btn-footer">Events</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init("E58C5r3_4zmrbAmAu");
+
+    document.getElementById("eventForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      emailjs.sendForm("service_m7q1kqn", "template_jl5bntm", this)
+        .then(function() {
+          //alert("Richiesta inviata con successo!");
+          document.getElementById("esito").innerHTML = "Request sent with success! Thanks";
+          document.getElementById("esito").style.color = "green";
+          //document.getElementById("eventForm").reset();
+        }, function(error) {
+          //alert("Errore nell'invio: " + JSON.stringify(error));
+          document.getElementById("esito").innerHTML = "An error occured. Please try again";
+          document.getElementById("esito").style.color = "red";
+        });
+    });
+  </script>
+</body>
+</html>
